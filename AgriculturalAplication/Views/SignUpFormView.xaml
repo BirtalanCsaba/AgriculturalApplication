@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="AgriculturalAplication.Views.SignUpFormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AgriculturalAplication.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000" 
+             FontSize="30" Background="#FF4372AC"
+             Foreground="#FF2557B0">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/BackgroundImages/BackgroundSignUp.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+                   Text="Registration" Margin="10"
+                   FontSize="50" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Grid.Row="2" FontFamily="Javanese Text" MaxWidth="250"
+                   HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="DemiBold"
+                   Foreground="IndianRed" FontSize="15" x:Name="UsernameErrorMessage"
+                   Visibility="{Binding UsernameIsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Username"
+                   Margin="10" FontWeight="DemiBold"/>
+        <TextBox Grid.Column="2" Grid.Row="3" MinWidth="200"
+                 Margin="10" Style="{StaticResource SignUpTextbox}"
+                 x:Name="Username" MaxWidth="200" MaxLength="20"/>
+        <TextBlock Grid.Column="2" Grid.Row="4" FontFamily="Javanese Text" MaxWidth="250"
+                   HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="DemiBold"
+                   Foreground="IndianRed" FontSize="15" x:Name="EmailErrorMessage"
+                   Visibility="{Binding EmailIsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Text="Email"
+                   Margin="10" FontWeight="DemiBold"/>
+        <TextBox Grid.Column="2" Grid.Row="5" MinWidth="200"
+                 Margin="10" Style="{StaticResource SignUpTextbox}"
+                 x:Name="Email" MaxWidth="200" MaxLength="30"/>
+        <TextBlock Grid.Column="2" Grid.Row="6" FontFamily="Javanese Text" MaxWidth="250"
+                   HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="DemiBold"
+                   Foreground="IndianRed" FontSize="15" x:Name="PasswordErrorMessage"
+                   Visibility="{Binding PasswordIsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" Text="Password"
+                   Margin="10" FontWeight="DemiBold"/>
+        <PasswordBox Grid.Column="2" Grid.Row="7" MinWidth="200" MaxLength="40"
+                 Margin="10" Style="{StaticResource SignUpTextboxPassword}"
+                 x:Name="Password" PasswordChanged="Password_PasswordChanged" MaxWidth="200"/>
+        <TextBlock Grid.Column="2" Grid.Row="8" FontFamily="Javanese Text" MaxWidth="250"
+                   HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="DemiBold"
+                   Foreground="IndianRed" FontSize="15" x:Name="RePasswordErrorMessage"
+                   Visibility="{Binding RePasswordIsErrorVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"/>
+        <TextBlock Grid.Column="1" Grid.Row="9" Text="Re Password"
+                   Margin="10" FontWeight="DemiBold"/>
+        <PasswordBox Grid.Column="2" Grid.Row="9" MinWidth="200" MaxLength="40"
+                 Margin="10" Style="{StaticResource SignUpTextboxPassword}"
+                 x:Name="RePassword" PasswordChanged="RePassword_PasswordChanged" MaxWidth="200"/>
+        <Button Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="2" 
+                x:Name="Register" Content="Register" Width="200" 
+                Margin="10" Style="{StaticResource RegisterButton}"/>
+        <Button Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" 
+                x:Name="BackButton" Content="Back" Width="200" 
+                Margin="10" Style="{StaticResource LogInButton}"/>
+    </Grid>
+</UserControl>

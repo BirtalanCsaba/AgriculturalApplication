@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="AgriculturalAplication.Views.SensorsFormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AgriculturalAplication.Views"
+             xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d"
+             FontSize="30"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border BorderBrush="Black" BorderThickness="2"
+            CornerRadius="30" Background="LightCyan">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" 
+                               Margin="5" Text="Temperature"
+                               HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" 
+                               Margin="5" Text="Humidity"
+                               HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" 
+                               Margin="5" Text="Luminosity"
+                               HorizontalAlignment="Center"/>
+
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Foreground="IndianRed" 
+                           Text="{Binding TempDangerText}" HorizontalAlignment="Center"/>
+
+                <Wpf:Gauge Grid.Row="0"
+                           Value="{Binding TemperatureProgress}" Margin="10"
+                           From="{Binding TempMinValue}" To="{Binding TempMaxValue}" 
+                           LabelsVisibility="Visible">
+                    <Wpf:Gauge.GaugeActiveFill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="{Binding TempColorGrad1}" Offset="0.0" />
+                            <GradientStop Color="{Binding TempColorGrad2}" Offset="0.5" />
+                            <GradientStop Color="{Binding TempColorGrad3}" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Wpf:Gauge.GaugeActiveFill>
+                </Wpf:Gauge>
+                <TextBlock Grid.Row="1" Text="&#186; Degrees"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Column="2" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Foreground="IndianRed" 
+                           Text="{Binding HumDangerText}" HorizontalAlignment="Center"/>
+
+                <Wpf:Gauge Value="{Binding HumidityProgress}" 
+                           Grid.Row="0" Margin="10"
+                           From="{Binding HumMinValue}" To="{Binding HumMaxValue}" 
+                           LabelsVisibility="Visible">
+                    <Wpf:Gauge.GaugeActiveFill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="{Binding HumColorGrad1}" Offset="0.0" />
+                            <GradientStop Color="{Binding HumColorGrad2}" Offset="0.5" />
+                            <GradientStop Color="{Binding HumColorGrad3}" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Wpf:Gauge.GaugeActiveFill>
+                </Wpf:Gauge>
+                <TextBlock Grid.Row="1" Text="% Percent"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Column="3" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Foreground="IndianRed" 
+                           Text="{Binding LumDangerText}" HorizontalAlignment="Center"/>
+
+                <Wpf:Gauge Value="{Binding LuminosityProgress}" 
+                           Grid.Row="0" Margin="10"
+                           From="{Binding LumMinValue}" To="{Binding LumMaxValue}"
+                           LabelsVisibility="Visible">
+                    <Wpf:Gauge.GaugeActiveFill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="{Binding LumColorGrad1}" Offset="0.0" />
+                            <GradientStop Color="{Binding LumColorGrad2}" Offset="0.5" />
+                            <GradientStop Color="{Binding LumColorGrad3}" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Wpf:Gauge.GaugeActiveFill>
+                </Wpf:Gauge>
+                <TextBlock Grid.Row="1" Text="Lux"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

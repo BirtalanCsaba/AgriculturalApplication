@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="AgriculturalAplication.Views.PlantsFormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AgriculturalAplication.Views"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontSize="30">
+    <Border BorderBrush="Transparent" BorderThickness="2"
+            CornerRadius="30" Background="LightBlue">
+        <Grid Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*" MinHeight="70"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0" Grid.Row="1" Margin="0,10,10,10"
+                    x:Name="BackButton" Content="Back" MaxWidth="250"
+                    Style="{StaticResource PlantBackButton}"/>
+            <Button Grid.Column="1" Grid.Row="1" Margin="10,10,0,10"
+                    x:Name="ApplySettings" Content="{Binding ApplySettingsButtonText}" MaxWidth="250"
+                    Style="{StaticResource PlantApplySettingsButton}">
+                <Button.Background>
+                    <SolidColorBrush Color="{Binding ApplySettingsButtonColor}"/>
+                </Button.Background>
+            </Button>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="Vegetables" FontSize="35"/>
+
+                <TextBlock Grid.Column="1" Grid.Row="0" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Text="Flowers" FontSize="35"/>
+                
+                <ListView Grid.Column="0" Grid.Row="1"
+                          Background="#FFFFAE97" Margin="0,0,10,0"
+                          ItemsSource="{Binding Path=Vegetables}"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          cal:Message.Attach="[Event SelectionChanged] = [Action ItemSelectVegetables($eventArgs)]">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Right"
+                                                Grid.Column="1" Margin="20,0,0,0">
+                                    <TextBlock Text="{Binding Temperature}" Foreground="Green"/>
+                                    <TextBlock Text="&#186;C" Foreground="Green"/>
+                                    <TextBlock Text=" | "/>
+                                    <TextBlock Text="{Binding Humidity}" Foreground="Blue"/>
+                                    <TextBlock Text="%" Foreground="Blue"/>
+                                    <TextBlock Text=" | "/>
+                                    <TextBlock Text="{Binding Luminosity}" Foreground="Yellow"/>
+                                    <TextBlock Text="lux " Foreground="Yellow"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView Grid.Column="1" Grid.Row="1"
+                          Background="#FF73AAE0" Margin="10,0,0,0"
+                          ItemsSource="{Binding Path=Flowers}"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          cal:Message.Attach="[Event SelectionChanged] = [Action ItemSelectFlowers($eventArgs)]">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Right"
+                                                Grid.Column="1" Margin="20,0,0,0">
+                                    <TextBlock Text="{Binding Temperature}" Foreground="Green"/>
+                                    <TextBlock Text="&#186;C" Foreground="Green"/>
+                                    <TextBlock Text=" | "/>
+                                    <TextBlock Text="{Binding Humidity}" Foreground="Blue"/>
+                                    <TextBlock Text="%" Foreground="Blue"/>
+                                    <TextBlock Text=" | "/>
+                                    <TextBlock Text="{Binding Luminosity}" Foreground="Yellow"/>
+                                    <TextBlock Text="lux " Foreground="Yellow"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>
